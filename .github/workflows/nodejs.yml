@@ -24,4 +24,6 @@ jobs:
        name: List current directory
      - run: npm --prefix ./my-app/ install
        name: Npm install in my-app
+     - run: npm --prefix ./my-app/ test
+       name: Testing my-app
        
