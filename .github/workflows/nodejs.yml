@@ -12,5 +12,6 @@ jobs:
        with: 
           node-version: '13.x'
           run: npm install
- 
+       name: destiny
+       run: node -v
        
