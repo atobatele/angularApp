@@ -1,12 +1,24 @@
-name: "Update Angular Action"
-on: # when the action should run. Can also be a CRON or in response to external events. see https://git.io/JeBz1
-  push
+name: Caching Primes
+
+on: push
 
 jobs:
-  ngxUptodate:
+  build:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Updating ng dependencies # the magic happens here !
-        uses: tinesoft/ngx-uptodate@master
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v1
+
+    - name: Cache Primes
+      id: cache-primes
+      uses: actions/cache@v1
+      with:
+        path: prime-numbers
+        key: ${{ runner.os }}-primes
+
+    - name: Generate Prime Numbers
+      if: steps.cache-primes.outputs.cache-hit != 'true'
+      run: /generate-primes.sh -d prime-numbers
+    
+    - name: Use Prime Numbers
+      run: /primes.sh -d prime-numbers
