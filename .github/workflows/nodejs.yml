@@ -7,6 +7,10 @@ jobs:
     runs-on: macOS-latest
     
     steps:
-    - uses: actions/checkout@v1
-    - run: cd my-app
-    - run: npm install
+     - uses: actions/checkout@v1
+     - uses: actions/setup-node@v1
+       with: 
+          node-version: '13.x'
+          run: npm install
+ 
+       
