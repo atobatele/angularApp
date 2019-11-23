@@ -13,10 +13,13 @@ jobs:
        with: 
           node-version: '13.x'
           run: npm install
-       name: Node version installed
+       name: Installing Node 13
      - run: node -v
-       name: changing directory into Kayode Angular App
+       name: Node version installed
      - run: cd my-app
-       name: Displaying current dir
+       name: Change directory into Angular app my-app 
      - run: pwd
+       name: Present working directory
+     - run: ls -al
+       name: List current directory
        
