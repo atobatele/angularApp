@@ -1,29 +1,12 @@
-name: Node CI
-
-on: [push]
+name: "Update Angular Action"
+on: # when the action should run. Can also be a CRON or in response to external events. see https://git.io/JeBz1
+  push
 
 jobs:
-  build:
-
+  ngxUptodate:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [8.x, 10.x, 12.x]
-
     steps:
-    - name: Angular Github Actions
-      uses: mayur-rawte/github-angular-actions@latest
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
-      run: |
-        npm ci
-        npm run build --if-present
-        npm test
-      env:
-        CI: true
+      - name: Updating ng dependencies # the magic happens here !
+        uses: tinesoft/ngx-uptodate@master
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
