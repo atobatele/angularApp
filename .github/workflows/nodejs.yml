@@ -1,4 +1,4 @@
-name: Caching Primes
+name: Simple start
 
 on: push
 
@@ -8,4 +8,4 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - run: ls -al
+    - run: npm install
