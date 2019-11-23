@@ -22,4 +22,6 @@ jobs:
        name: Present working directory
      - run: ls -al
        name: List current directory
+     - run: npm --prefix ./my-app/ install
+       name: Npm install in my-app
        
