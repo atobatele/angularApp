@@ -8,10 +8,13 @@ jobs:
     
     steps:
      - uses: actions/checkout@v1
+       name: Setting up Latest Node 13.X
      - uses: actions/setup-node@v1
        with: 
           node-version: '13.x'
           run: npm install
-       name: destiny
+       name: Node version installed
      - run: node -v
+       name: changing directory into Kayode Angular App
+     - run: cd my-app
        
